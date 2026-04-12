@@ -11865,6 +11865,15 @@ body.home2-page .hero-video-content h1 {
     line-height: 1.7;
 }
 
+.price-table td:nth-child(2) {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.price-table td:nth-child(2)::before {
+    content: none !important;
+}
+
 .price-table col.price-col-service {
     width: 34%;
 }
@@ -11916,11 +11925,11 @@ body.home2-page .hero-video-content h1 {
     }
 
     .price-table td:nth-child(2) {
-        padding-left: 24px;
+        padding-left: 10px !important;
     }
 
     .price-table td:nth-child(2)::before {
-        left: 10px;
+        content: none !important;
     }
 
     .price-table td:nth-child(3) {
