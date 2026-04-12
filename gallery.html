@@ -25,11 +25,11 @@
 
             <button class="hamburger" id="navToggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars"></i>
-            </button>
+            </button> 
 
             <ul class="nav-links">
                 <li><a href="index.html">Home1</a></li>
-                <li><a href="home2.html" class="active">Home2</a></li>
+                <li><a href="home2.html">Home2</a></li>
                 <li><a href="about.html">About</a></li>
 
                 <li class="dropdown">
@@ -45,7 +45,7 @@
                     </ul>
                 </li>
 
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -226,11 +226,19 @@
                         <div class="before-after-content">
                             <h3>Driveway Restoration</h3>
                             <p>Removed years of oil stains, dirt, and grime to reveal the original beauty of this concrete driveway.</p>
+                            <div class="before-after-meta">
+                                <span><i class="fa-solid fa-road"></i> Concrete surface care</span>
+                                <span><i class="fa-solid fa-droplet"></i> Heavy stain treatment</span>
+                            </div>
                             <ul class="before-after-points">
                                 <li><i class="fa-solid fa-check"></i> Oil marks fully lifted from the main entry zone</li>
                                 <li><i class="fa-solid fa-check"></i> Deep rinse removed embedded dirt from surface pores</li>
                                 <li><i class="fa-solid fa-check"></i> Final finish improved the full driveway appearance</li>
                             </ul>
+                            <div class="before-after-highlight">
+                                <strong>Result</strong>
+                                <p>Finished with a brighter, cleaner entry surface that looks sharper and feels safer underfoot.</p>
+                            </div>
                             <div class="transformation-stats">
                                 <span><i class="fa-solid fa-clock"></i> 2 hours</span>
                                 <span><i class="fa-solid fa-star"></i> 5-star result</span>
@@ -252,11 +260,19 @@
                         <div class="before-after-content">
                             <h3>House Exterior Cleaning</h3>
                             <p>Complete siding restoration using eco-friendly cleaning solutions and gentle pressure washing techniques.</p>
+                            <div class="before-after-meta">
+                                <span><i class="fa-solid fa-house"></i> Full facade refresh</span>
+                                <span><i class="fa-solid fa-leaf"></i> Eco-safe soft wash</span>
+                            </div>
                             <ul class="before-after-points">
                                 <li><i class="fa-solid fa-check"></i> Soft-wash safe process for delicate exterior siding</li>
                                 <li><i class="fa-solid fa-check"></i> Brighter finish across trims, panels, and front facade</li>
                                 <li><i class="fa-solid fa-check"></i> Eco-friendly treatment used for a safer clean</li>
                             </ul>
+                            <div class="before-after-highlight">
+                                <strong>Ideal for</strong>
+                                <p>Perfect for siding, trims, soffits, and front-facing walls that need a safer low-pressure clean.</p>
+                            </div>
                             <div class="transformation-stats">
                                 <span><i class="fa-solid fa-clock"></i> 4 hours</span>
                                 <span><i class="fa-solid fa-star"></i> 5-star result</span>
@@ -278,11 +294,19 @@
                         <div class="before-after-content">
                             <h3>Deck & Fence Cleaning</h3>
                             <p>Restored weathered wood surfaces to their natural beauty while protecting the wood from further damage.</p>
+                            <div class="before-after-meta">
+                                <span><i class="fa-solid fa-tree"></i> Wood-safe wash process</span>
+                                <span><i class="fa-solid fa-sun"></i> Ready for protection</span>
+                            </div>
                             <ul class="before-after-points">
                                 <li><i class="fa-solid fa-check"></i> Surface buildup removed without damaging the wood</li>
                                 <li><i class="fa-solid fa-check"></i> Original wood tone restored more evenly</li>
                                 <li><i class="fa-solid fa-check"></i> Cleaner finish prepared the area for future protection</li>
                             </ul>
+                            <div class="before-after-highlight">
+                                <strong>Finish</strong>
+                                <p>Leaves the timber cleaner, more even in tone, and ready for staining or seasonal protection.</p>
+                            </div>
                             <div class="transformation-stats">
                                 <span><i class="fa-solid fa-clock"></i> 3 hours</span>
                                 <span><i class="fa-solid fa-star"></i> 5-star result</span>
@@ -495,9 +519,20 @@
                 </div>
 
                 <div class="gallery-cta reveal">
-                    <h3>Ready to Transform Your Property?</h3>
-                    <p>Get a free quote for professional pressure washing services</p>
-                    <a href="contact.html" class="btn hero-video-btn">Get Free Quote</a>
+                    <div class="gallery-cta-copy">
+                        <span class="gallery-cta-kicker">Free Estimate</span>
+                        <h3>Ready to Transform Your Property?</h3>
+                        <p>Tell us what needs cleaning and we will build a fast quote for your home, driveway, roof, or business exterior.</p>
+                        <div class="gallery-cta-points">
+                            <span><i class="fa-solid fa-bolt"></i> Fast response</span>
+                            <span><i class="fa-solid fa-shield-heart"></i> Surface-safe methods</span>
+                            <span><i class="fa-solid fa-star"></i> Premium finish</span>
+                        </div>
+                    </div>
+                    <div class="gallery-cta-actions">
+                        <a href="contact.html" class="btn hero-video-btn">Get Free Quote</a>
+                        <a href="pricing.html" class="gallery-cta-link">View Pricing</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -556,7 +591,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 HydroRush. All rights reserved.</p>
+                <p>&copy; <span class="footer-year">2026</span> HydroRush. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
