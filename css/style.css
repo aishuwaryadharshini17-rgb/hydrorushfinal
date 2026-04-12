@@ -11865,6 +11865,69 @@ body.home2-page .hero-video-content h1 {
     line-height: 1.7;
 }
 
+.price-table col.price-col-service {
+    width: 34%;
+}
+
+.price-table col.price-col-cost {
+    width: 18%;
+}
+
+.price-table col.price-col-description {
+    width: 48%;
+}
+
+@media (max-width: 640px) {
+    .price-table {
+        min-width: 100%;
+        table-layout: fixed;
+    }
+
+    .price-table col.price-col-service {
+        width: 37%;
+    }
+
+    .price-table col.price-col-cost {
+        width: 23%;
+    }
+
+    .price-table col.price-col-description {
+        width: 40%;
+    }
+
+    .price-table th,
+    .price-table td {
+        padding: 12px 10px;
+        vertical-align: top;
+    }
+
+    .price-table th:nth-child(1),
+    .price-table td:nth-child(1),
+    .price-table th:nth-child(2),
+    .price-table td:nth-child(2),
+    .price-table th:nth-child(3),
+    .price-table td:nth-child(3) {
+        text-align: left !important;
+    }
+
+    .price-table th:nth-child(2),
+    .price-table td:nth-child(2) {
+        white-space: nowrap;
+    }
+
+    .price-table td:nth-child(2) {
+        padding-left: 24px;
+    }
+
+    .price-table td:nth-child(2)::before {
+        left: 10px;
+    }
+
+    .price-table td:nth-child(3) {
+        line-height: 1.55;
+    }
+}
+
 body.theme-dark .pricing-section,
 body.theme-dark .offers-section,
 body.theme-dark .price-table-section {
