@@ -5204,10 +5204,16 @@ body.home2-page .home2-why-card-image img {
 
 body.home2-page .home2-why-card-blue,
 body.home2-page .home2-why-card-orange {
-    padding: 22px 18px;
+    padding: 18px 18px 16px;
     color: #ffffff;
     display: grid;
-    align-content: end;
+    grid-template-columns: 40px minmax(0, 1fr);
+    grid-template-areas:
+        "icon title"
+        "body body";
+    align-content: start;
+    align-items: start;
+    gap: 12px;
 }
 
 body.home2-page .home2-why-card-blue,
@@ -5217,23 +5223,47 @@ body.home2-page .home2-why-card-orange {
 
 body.home2-page .home2-why-card-blue i,
 body.home2-page .home2-why-card-orange i {
-    margin-bottom: 14px;
-    font-size: 0.92rem;
+    grid-area: icon;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+    opacity: 1;
+    visibility: visible;
 }
 
 body.home2-page .home2-why-card-blue h3,
 body.home2-page .home2-why-card-orange h3 {
-    margin-bottom: 10px;
-    font-size: 1.08rem;
-    line-height: 1.15;
+    grid-area: title;
+    align-self: center;
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.12;
     font-weight: 800;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
 }
 
 body.home2-page .home2-why-card-blue p,
 body.home2-page .home2-why-card-orange p {
+    grid-area: body;
+    margin: 0;
     color: rgba(255, 255, 255, 0.92);
-    font-size: 0.86rem;
-    line-height: 1.58;
+    font-size: 0.84rem;
+    line-height: 1.48;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.92);
+}
+
+html[dir="rtl"] body.home2-page .home2-why-card-blue i,
+html[dir="rtl"] body.home2-page .home2-why-card-orange i {
+    justify-self: end;
 }
 
 @media (max-width: 992px) {
@@ -10156,7 +10186,7 @@ body.theme-dark .feature-box p {
 .before-after-showcase {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: clamp(78px, 7vw, 104px);
 }
 
 .before-after-item {
@@ -10215,7 +10245,7 @@ body.theme-dark .feature-box p {
 
 .before-after-content {
     gap: 12px;
-    padding: 0;
+    padding: 0 0 clamp(16px, 2vw, 24px);
     justify-content: flex-start;
 }
 
@@ -14005,4 +14035,1067 @@ body.service-page .benefit-text p {
         line-height: 1.2;
         text-align: center;
     }
+}
+
+/* ===== DARK MODE COVERAGE CLEANUP ===== */
+.auth-page-tools {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    z-index: 40;
+}
+
+html[dir="rtl"] .auth-page-tools {
+    right: auto;
+    left: 22px;
+}
+
+.auth-theme-toggle {
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(10, 32, 61, 0.12);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #0a2642;
+    box-shadow: 0 14px 34px rgba(8, 31, 58, 0.16);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.auth-theme-toggle:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #1180d8 0%, #0a64b7 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 18px 36px rgba(8, 56, 105, 0.28);
+}
+
+body.theme-dark .auth-theme-toggle {
+    background: rgba(7, 22, 39, 0.92);
+    color: #f3f9ff;
+    border-color: rgba(123, 188, 255, 0.26);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+}
+
+body.theme-dark .auth-theme-toggle:hover {
+    background: linear-gradient(135deg, #1180d8 0%, #0a64b7 100%);
+    color: #ffffff;
+    border-color: transparent;
+}
+
+body.theme-dark .benefits-section {
+    background: linear-gradient(180deg, #081423 0%, #0d1c2d 100%) !important;
+}
+
+body.theme-dark .benefits-header h2,
+body.theme-dark .benefit-text h3,
+body.theme-dark .cta-text h2,
+body.theme-dark .home2-why-list li,
+body.theme-dark .home2-why-phone {
+    color: #f3f9ff !important;
+    -webkit-text-fill-color: #f3f9ff !important;
+}
+
+body.theme-dark .benefits-header p,
+body.theme-dark .benefit-text p,
+body.theme-dark .benefits-footer p,
+body.theme-dark .cta-text p,
+body.theme-dark .cta-item span,
+body.theme-dark .home2-why-phone span {
+    color: rgba(224, 237, 250, 0.84) !important;
+    -webkit-text-fill-color: rgba(224, 237, 250, 0.84) !important;
+}
+
+body.theme-dark .home2-why-list i,
+body.theme-dark .cta-item i,
+body.theme-dark .cta-item img {
+    color: #7be6ff !important;
+}
+
+body.theme-dark .home2-why-phone i {
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+}
+
+body.theme-dark .exterior-cta-section,
+body.theme-dark .roof-cta-section {
+    background: linear-gradient(180deg, #081423 0%, #0d1c2d 100%) !important;
+    color: #e9f4ff !important;
+}
+
+body.theme-dark .exterior-cta-section .cta-text h2,
+body.theme-dark .roof-cta-section .cta-text h2,
+body.theme-dark .exterior-cta-section .cta-item span,
+body.theme-dark .roof-cta-section .cta-item span {
+    color: #f3f9ff !important;
+    -webkit-text-fill-color: #f3f9ff !important;
+}
+
+body.theme-dark .exterior-cta-section .cta-text p,
+body.theme-dark .roof-cta-section .cta-text p {
+    color: rgba(224, 237, 250, 0.84) !important;
+    -webkit-text-fill-color: rgba(224, 237, 250, 0.84) !important;
+}
+
+body.theme-dark .exterior-cta-section .cta-btn.secondary,
+body.theme-dark .roof-cta-section .cta-btn.secondary {
+    background: transparent !important;
+    color: #f3f9ff !important;
+    border-color: rgba(123, 188, 255, 0.52) !important;
+}
+
+body.theme-dark .footer-socials a {
+    background: rgba(110, 173, 255, 0.12);
+    color: #f3f9ff;
+    border-color: rgba(110, 173, 255, 0.22);
+}
+
+@media (max-width: 600px) {
+    .auth-page-tools {
+        top: 16px;
+        right: 16px;
+    }
+
+    html[dir="rtl"] .auth-page-tools {
+        right: auto;
+        left: 16px;
+    }
+
+    .auth-theme-toggle {
+        width: 46px;
+        height: 46px;
+    }
+}
+
+/* ===== FINAL RTL CLEANUP ===== */
+html[dir="rtl"] :where(
+    .pricing-banner-content,
+    .about-banner-content,
+    .hero-video-content,
+    .section-heading,
+    .services-header,
+    .pw-process-header,
+    .testimonial-slide,
+    .booking-step,
+    .cta-text,
+    .about-story-content,
+    .about-story-quote,
+    .about-difference-item > div,
+    .service-why-copy,
+    .service-why-point,
+    .gallery-cta,
+    .pricing-header,
+    .contact-header,
+    .map-header,
+    .contact-card,
+    .location-card,
+    .faq-item,
+    .price-card,
+    .offer-card,
+    .pricing-card,
+    .pricing-offer,
+    .popular-service-card-light,
+    .wash-intro-content,
+    .why-copy,
+    .home2-why-copy,
+    .benefits-header,
+    .benefit-text
+) {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] :where(
+    .pricing-banner-content,
+    .about-banner-content,
+    .hero-video-content,
+    .section-heading,
+    .services-header,
+    .pw-process-header,
+    .testimonials-heading,
+    .booking-heading,
+    .testimonial-slide,
+    .booking-step
+) {
+    text-align: center !important;
+}
+
+html[dir="rtl"] :where(
+    .cta-text,
+    .about-story-content,
+    .about-story-quote,
+    .about-difference-item,
+    .service-why-copy,
+    .service-why-point,
+    .gallery-cta,
+    .pricing-header,
+    .contact-header,
+    .map-header,
+    .contact-card,
+    .location-card,
+    .faq-item,
+    .price-card,
+    .offer-card,
+    .pricing-card,
+    .pricing-offer,
+    .popular-service-card-light,
+    .wash-intro-content,
+    .why-copy,
+    .home2-why-copy,
+    .benefits-header,
+    .benefit-text
+) {
+    text-align: right !important;
+}
+
+html[dir="rtl"] :where(
+    .pricing-banner-content .banner-kicker,
+    .pricing-banner-content h1,
+    .pricing-banner-content p,
+    .about-banner-content .top-text,
+    .about-banner-content h1,
+    .about-banner-content p,
+    .hero-video-content .top-text,
+    .hero-video-content h1,
+    .hero-video-content p,
+    .section-heading .section-kicker,
+    .section-heading h2,
+    .section-heading p,
+    .services-header h2,
+    .services-header p,
+    .pw-process-header h2,
+    .pw-process-header p,
+    .cta-text h2,
+    .cta-text p,
+    .cta-item span,
+    .testimonial-text,
+    .testimonial-slide h3,
+    .testimonial-slide span,
+    .booking-step h3,
+    .booking-step p,
+    .about-story-content p,
+    .about-story-quote p,
+    .about-difference-item h3,
+    .about-difference-item p,
+    .service-benefit-points li,
+    .service-why-copy h2,
+    .service-why-copy p,
+    .service-why-point h3,
+    .service-why-point p,
+    .gallery-cta h3,
+    .gallery-cta p,
+    .gallery-cta-points span,
+    .pricing-header h2,
+    .pricing-header p,
+    .price-row h3,
+    .price-row p,
+    .price-row strong,
+    .price-row span,
+    .price-card h1,
+    .price-card h3,
+    .price-card p,
+    .price-card span,
+    .price-card li,
+    .offer-card h3,
+    .offer-card p,
+    .pricing-card h3,
+    .pricing-card p,
+    .pricing-offer h3,
+    .pricing-offer p,
+    .popular-service-card-light h3,
+    .popular-service-card-light p,
+    .wash-intro-content h2,
+    .wash-intro-content p,
+    .wash-intro-info h3,
+    .wash-intro-info li,
+    .why-copy h2,
+    .why-copy p,
+    .why-list li,
+    .home2-why-copy h2,
+    .home2-why-copy p,
+    .home2-why-list li,
+    .home2-why-phone span,
+    .contact-header h2,
+    .contact-header p,
+    .map-header h2,
+    .map-header p,
+    .contact-card h3,
+    .contact-card p,
+    .location-card h3,
+    .location-card p,
+    .faq-question,
+    .faq-answer p,
+    .benefits-header h2,
+    .benefits-header p,
+    .benefit-text h3,
+    .benefit-text p,
+    .benefits-footer p
+) {
+    unicode-bidi: plaintext;
+}
+
+html[dir="rtl"] :where(.testimonial-track, .gallery-track, .feedbacks-track) {
+    direction: ltr !important;
+}
+
+html[dir="rtl"] :where(.testimonial-nav, .testimonial-dots, .gallery-nav, .feedbacks-nav, .feedbacks-dots) {
+    direction: ltr !important;
+}
+
+html[dir="rtl"] .testimonial-nav i,
+html[dir="rtl"] .gallery-nav i {
+    transform: scaleX(-1);
+}
+
+html[dir="rtl"] .hero-video-actions,
+html[dir="rtl"] .hero-video-points,
+html[dir="rtl"] .cta-buttons,
+html[dir="rtl"] .cta-features,
+html[dir="rtl"] .home2-why-actions {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .hero-video-content,
+html[dir="rtl"] .pricing-banner-content,
+html[dir="rtl"] .about-banner-content,
+html[dir="rtl"] .section-heading {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+html[dir="rtl"] .hero-video-points {
+    justify-content: center !important;
+}
+
+html[dir="rtl"] .hero-video-points span,
+html[dir="rtl"] .why-list li,
+html[dir="rtl"] .wash-intro-info li,
+html[dir="rtl"] .home2-why-list li {
+    direction: ltr;
+    unicode-bidi: plaintext;
+}
+
+html[dir="rtl"] .cta-container {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .cta-features {
+    align-items: flex-end;
+}
+
+html[dir="rtl"] .cta-features .cta-item,
+html[dir="rtl"] .cta-features div {
+    width: 100%;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+html[dir="rtl"] body.service-page .about-difference-item {
+    grid-template-columns: minmax(0, 1fr) 18px !important;
+}
+
+html[dir="rtl"] body.service-page .about-difference-item > div {
+    min-width: 0;
+    align-items: flex-end;
+}
+
+html[dir="rtl"] body.service-page .about-difference-item h3 {
+    min-height: 0;
+    font-size: 1.12rem !important;
+    line-height: 1.22 !important;
+}
+
+html[dir="rtl"] body.service-page .about-difference-item p {
+    font-size: 1rem !important;
+    line-height: 1.68 !important;
+}
+
+html[dir="rtl"] .service-benefit-points li {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    text-align: right;
+    gap: 8px;
+}
+
+html[dir="rtl"] .service-benefit-points li::before {
+    margin: 0;
+}
+
+/* ===== RTL STABILIZATION ===== */
+html[dir="rtl"] body {
+    direction: rtl;
+}
+
+html[dir="rtl"] .dropdown > a,
+html[dir="rtl"] .footer-socials,
+html[dir="rtl"] .footer-bottom-links,
+html[dir="rtl"] .gallery-cta-actions,
+html[dir="rtl"] .service-card .service-footer,
+html[dir="rtl"] .svc-card .svc-footer,
+html[dir="rtl"] .featured-project-content .project-details {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-links > li.dropdown > .dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+    transform: none !important;
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-links > li.dropdown > .dropdown-menu a {
+    text-align: right;
+}
+
+html[dir="rtl"] .prev {
+    left: auto;
+    right: 20px;
+}
+
+html[dir="rtl"] .next {
+    right: auto;
+    left: 20px;
+}
+
+html[dir="rtl"] .price-table {
+    direction: rtl;
+}
+
+html[dir="rtl"] .price-table th:nth-child(1),
+html[dir="rtl"] .price-table td:nth-child(1),
+html[dir="rtl"] .price-table th:nth-child(3),
+html[dir="rtl"] .price-table td:nth-child(3) {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .price-table th:nth-child(2),
+html[dir="rtl"] .price-table td:nth-child(2) {
+    direction: ltr;
+    text-align: center !important;
+    unicode-bidi: plaintext;
+}
+
+html[dir="rtl"] .contact-form,
+html[dir="rtl"] .form-row,
+html[dir="rtl"] .contact-content,
+html[dir="rtl"] .location-content {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .location-card {
+    flex-direction: row-reverse;
+}
+
+@media (min-width: 769px) {
+    html[dir="rtl"] .contact-item {
+        flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .footer-bottom {
+        flex-direction: row-reverse;
+    }
+}
+
+@media (max-width: 768px) {
+    html[dir="rtl"] .contact-item {
+        text-align: right;
+    }
+
+    html[dir="rtl"] .contact-icon,
+    html[dir="rtl"] .location-icon {
+        align-self: flex-end;
+    }
+}
+
+/* ===== ABOUT RTL STABILITY FIX ===== */
+html[dir="rtl"] .about-story-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .about-story-content,
+html[dir="rtl"] .about-story-quote {
+    direction: rtl !important;
+    unicode-bidi: isolate;
+    width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+}
+
+html[dir="rtl"] .about-story-quote {
+    grid-template-columns: minmax(0, 1fr) 28px;
+}
+
+html[dir="rtl"] .about-story-quote p,
+html[dir="rtl"] .about-story-content > p {
+    width: 100%;
+    max-width: none;
+}
+
+@media (max-width: 1024px) {
+    html[dir="rtl"] .about-story-content,
+    html[dir="rtl"] .about-story-media {
+        width: 100%;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ===== ABOUT RTL QUOTE COLUMN FIX ===== */
+html[dir="rtl"] .about-story-quote {
+    grid-template-columns: minmax(0, 1fr) 28px;
+}
+
+html[dir="rtl"] .about-quote-mark {
+    grid-column: 2;
+    justify-self: end;
+}
+
+html[dir="rtl"] .about-story-quote p {
+    grid-column: 1;
+    width: 100%;
+    max-width: none;
+}
+
+@media (max-width: 520px) {
+    html[dir="rtl"] .about-quote-mark,
+    html[dir="rtl"] .about-story-quote p {
+        grid-column: auto;
+        justify-self: start;
+    }
+}
+
+/* ===== RTL PAGE COVERAGE PATCH ===== */
+html[dir="rtl"] .hero-inner,
+html[dir="rtl"] .experts-panel,
+html[dir="rtl"] body.home2-page .home2-why-shell,
+html[dir="rtl"] .dw-intro,
+html[dir="rtl"] .dw-results,
+html[dir="rtl"] .dw-cta-wrap {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-text,
+html[dir="rtl"] .hero-text h1,
+html[dir="rtl"] .hero-text > p,
+html[dir="rtl"] .service-tile-card,
+html[dir="rtl"] .service-tile-card h3,
+html[dir="rtl"] .service-tile-card p,
+html[dir="rtl"] .experts-copy,
+html[dir="rtl"] .experts-copy h2,
+html[dir="rtl"] .experts-details p,
+html[dir="rtl"] .experts-list,
+html[dir="rtl"] .experts-list li,
+html[dir="rtl"] .feedback-card,
+html[dir="rtl"] .feedback-card p,
+html[dir="rtl"] body.home2-page .home2-why-copy,
+html[dir="rtl"] body.home2-page .home2-why-copy h2,
+html[dir="rtl"] body.home2-page .home2-why-copy p,
+html[dir="rtl"] body.home2-page .home2-why-phone,
+html[dir="rtl"] body.service-page .about-story-heading,
+html[dir="rtl"] body.service-page .about-story-heading h1,
+html[dir="rtl"] body.service-page .about-difference-heading,
+html[dir="rtl"] body.service-page .about-difference-heading h2,
+html[dir="rtl"] body.service-page .drive-text,
+html[dir="rtl"] body.service-page .drive-text h1,
+html[dir="rtl"] body.service-page .drive-text p,
+html[dir="rtl"] .contact-section .contact-content,
+html[dir="rtl"] .map-section .location-content,
+html[dir="rtl"] .dw-copy,
+html[dir="rtl"] .dw-results-copy,
+html[dir="rtl"] .dw-cta-copy,
+html[dir="rtl"] .dw-card,
+html[dir="rtl"] .dw-card h3,
+html[dir="rtl"] .dw-card p,
+html[dir="rtl"] .dw-state,
+html[dir="rtl"] .dw-state h3,
+html[dir="rtl"] .dw-state p,
+html[dir="rtl"] .dw-step,
+html[dir="rtl"] .dw-step h3,
+html[dir="rtl"] .dw-step p,
+html[dir="rtl"] .dw-trust article,
+html[dir="rtl"] .dw-trust strong,
+html[dir="rtl"] .dw-trust span,
+html[dir="rtl"] .dw-cta-side article,
+html[dir="rtl"] .dw-cta-side strong,
+html[dir="rtl"] .dw-cta-side span,
+html[dir="rtl"] .dw-highlight-points p {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+html[dir="rtl"] .hero-cta,
+html[dir="rtl"] .hero-points li,
+html[dir="rtl"] .service-tabs-inner,
+html[dir="rtl"] .gallery-tabs-wrap,
+html[dir="rtl"] body.home2-page .home2-why-phone,
+html[dir="rtl"] body.service-page .drive-hero-inner,
+html[dir="rtl"] body.service-page .drive-cta-inner,
+html[dir="rtl"] .dw-list li,
+html[dir="rtl"] .dw-care-list li,
+html[dir="rtl"] .dw-cta-list li,
+html[dir="rtl"] .dw-highlight-points p,
+html[dir="rtl"] .dw-points span,
+html[dir="rtl"] .dw-actions,
+html[dir="rtl"] .dw-value {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .service-tile-card,
+html[dir="rtl"] .dw-card,
+html[dir="rtl"] .dw-state,
+html[dir="rtl"] .dw-step,
+html[dir="rtl"] .dw-trust article,
+html[dir="rtl"] .dw-cta-side article {
+    align-items: flex-end;
+}
+
+html[dir="rtl"] .service-link {
+    right: auto;
+    left: 68px;
+}
+
+html[dir="rtl"] .hero-badge {
+    left: auto;
+    right: -22px;
+}
+
+html[dir="rtl"] .hero-badge-2 {
+    right: auto;
+    left: -20px;
+}
+
+html[dir="rtl"] .svc-badge {
+    left: auto;
+    right: 14px;
+}
+
+html[dir="rtl"] .g-overlay-tag {
+    right: auto;
+    left: 14px;
+}
+
+html[dir="rtl"] .lb-close {
+    right: auto;
+    left: 24px;
+}
+
+html[dir="rtl"] .experts-list li {
+    padding-left: 0;
+    padding-right: 18px;
+}
+
+html[dir="rtl"] .experts-list li::before {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .skill-head {
+    direction: rtl;
+}
+
+html[dir="rtl"] .skill-track span {
+    margin-left: auto;
+    margin-right: 0;
+    background: linear-gradient(270deg, #2196f3 0%, #0f73ce 100%);
+}
+
+html[dir="rtl"] .skill-track span::after {
+    right: auto;
+    left: -2px;
+}
+
+html[dir="rtl"] body.home2-page .home2-why-grid {
+    left: auto;
+    right: -10px;
+}
+
+html[dir="rtl"] body.home2-page .pricing-panel .price-row {
+    direction: rtl;
+    grid-template-columns: minmax(110px, 0.8fr) minmax(0, 2.2fr) minmax(0, 1.4fr) !important;
+}
+
+html[dir="rtl"] body.home2-page .pricing-panel .price-row h3,
+html[dir="rtl"] body.home2-page .pricing-panel .price-row p {
+    text-align: right !important;
+    justify-self: end !important;
+}
+
+html[dir="rtl"] body.home2-page .pricing-panel .price-row strong,
+html[dir="rtl"] body.home2-page .pricing-panel .price-row span {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    text-align: left !important;
+    justify-self: start !important;
+}
+
+html[dir="rtl"] body.service-page .gallery-controls {
+    direction: rtl;
+}
+
+html[dir="rtl"] body.service-page .gallery-controls .section-heading,
+html[dir="rtl"] body.service-page .gallery-controls .section-heading h2,
+html[dir="rtl"] body.service-page .gallery-controls .section-heading p,
+html[dir="rtl"] body.service-page .gallery-controls .section-kicker,
+html[dir="rtl"] body.service-page .gallery-controls .gallery-count {
+    text-align: right !important;
+}
+
+html[dir="rtl"] body.service-page .gallery-controls .section-kicker {
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+html[dir="rtl"] .exterior-work-section .gallery-controls {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+}
+
+html[dir="rtl"] .exterior-work-section .gallery-controls > div:first-child {
+    justify-self: end !important;
+}
+
+html[dir="rtl"] .exterior-work-section .gallery-controls > div:last-child {
+    justify-self: start !important;
+}
+
+html[dir="rtl"] .contact-section .contact-item,
+html[dir="rtl"] .map-section .location-card {
+    direction: rtl;
+    grid-template-columns: minmax(0, 1fr) 56px !important;
+    text-align: right !important;
+}
+
+html[dir="rtl"] .contact-section .contact-icon,
+html[dir="rtl"] .map-section .location-icon {
+    grid-column: 2;
+    justify-self: end;
+    align-self: start !important;
+}
+
+html[dir="rtl"] .contact-section .contact-content,
+html[dir="rtl"] .map-section .location-content {
+    grid-column: 1;
+}
+
+html[dir="rtl"] .dw-list li,
+html[dir="rtl"] .dw-care-list li,
+html[dir="rtl"] .dw-cta-list li,
+html[dir="rtl"] .dw-highlight-points p,
+html[dir="rtl"] .dw-points span,
+html[dir="rtl"] .dw-value {
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .price-table tbody tr {
+    animation-name: rowFadeInRTL;
+}
+
+html[dir="rtl"] .price-table tbody tr:hover {
+    transform: translateX(-5px);
+}
+
+@keyframes rowFadeInRTL {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 900px) {
+    html[dir="rtl"] .exterior-work-section .gallery-controls > div:last-child {
+        justify-self: end !important;
+    }
+}
+
+@media (max-width: 768px) {
+    html[dir="rtl"] body.home2-page .pricing-panel .price-row h3,
+    html[dir="rtl"] body.home2-page .pricing-panel .price-row p,
+    html[dir="rtl"] body.home2-page .pricing-panel .price-row strong,
+    html[dir="rtl"] body.home2-page .pricing-panel .price-row span {
+        text-align: right !important;
+        justify-self: end !important;
+    }
+
+    html[dir="rtl"] .contact-section .contact-item,
+    html[dir="rtl"] .map-section .location-card {
+        grid-template-columns: minmax(0, 1fr) 48px !important;
+    }
+}
+
+/* ===== CTA RTL FIX ===== */
+html[dir="rtl"] .cta-section .cta-container {
+    flex-direction: row !important;
+}
+
+html[dir="rtl"] .cta-section .cta-text {
+    direction: ltr !important;
+    unicode-bidi: isolate;
+    text-align: right !important;
+}
+
+html[dir="rtl"] .cta-section .cta-text h2,
+html[dir="rtl"] .cta-section .cta-text p,
+html[dir="rtl"] .cta-section .cta-item span {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .cta-section .cta-features {
+    flex-direction: column !important;
+    align-items: flex-end;
+}
+
+html[dir="rtl"] .cta-section .cta-item {
+    width: 100%;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+html[dir="rtl"] .cta-section .cta-buttons {
+    flex-direction: row-reverse !important;
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .cta-section .cta-image {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    html[dir="rtl"] .cta-section .cta-container {
+        flex-direction: column !important;
+    }
+
+    html[dir="rtl"] .cta-section .cta-buttons {
+        justify-content: flex-end;
+    }
+}
+
+/* ===== RTL ENGLISH COPY STABILITY ===== */
+html[dir="rtl"] :where(
+    .hero-slider .content,
+    .slide .content,
+    .hero-video-content,
+    .pricing-banner-content,
+    .about-banner-content,
+    .hero-gallery-content,
+    .banner-content,
+    .section-heading,
+    .services-header,
+    .app-header,
+    .table-header,
+    .faq-header,
+    .map-header,
+    .contact-header,
+    .pricing-header,
+    .about-story-heading,
+    .about-story-content,
+    .about-story-quote,
+    .about-difference-heading,
+    .about-difference-item > div,
+    .service-why-copy,
+    .service-why-point,
+    .why-copy,
+    .why-card,
+    .wash-intro-content,
+    .home2-why-copy,
+    .home2-why-card,
+    .benefits-header,
+    .benefit-text,
+    .cta-text,
+    .gallery-cta,
+    .trust-item > div,
+    .promo-copy,
+    .service-tile-card,
+    .feature-box,
+    .package-card,
+    .price-card,
+    .offer-card,
+    .pricing-card,
+    .pricing-offer,
+    .service-card .service-content,
+    .svc-body,
+    .drive-text,
+    .drive-card,
+    .contact-content,
+    .location-content,
+    .testimonial-slide,
+    .feedback-card,
+    .booking-step,
+    .pw-process-header,
+    .pw-step,
+    .experts-copy,
+    .dw-copy,
+    .dw-results-copy,
+    .dw-cta-copy,
+    .dw-card,
+    .dw-state,
+    .dw-step,
+    .dw-trust article,
+    .dw-cta-side article,
+    .footer-brand,
+    .footer-column,
+    .footer-contact li
+) {
+    direction: ltr !important;
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] :where(
+    .hero-video-content h1,
+    .hero-video-content p,
+    .hero-video-content .top-text,
+    .pricing-banner-content .banner-kicker,
+    .pricing-banner-content h1,
+    .pricing-banner-content p,
+    .about-story-heading h1,
+    .about-story-content p,
+    .about-story-quote p,
+    .about-difference-item h3,
+    .about-difference-item p,
+    .service-benefit-points li,
+    .trust-item h3,
+    .trust-item p,
+    .why-card h3,
+    .why-card p,
+    .booking-step h3,
+    .booking-step p,
+    .testimonial-text,
+    .testimonial-slide h3,
+    .testimonial-slide span,
+    .feedback-card p,
+    .feedback-person h3,
+    .feedback-person span,
+    .cta-text h2,
+    .cta-text p,
+    .cta-item span,
+    .home2-why-copy h2,
+    .home2-why-copy p,
+    .home2-why-list li,
+    .home2-why-phone span,
+    .service-tile-card h3,
+    .service-tile-card p,
+    .feature-box h3,
+    .feature-box p,
+    .experts-copy h2,
+    .experts-details p,
+    .experts-list li,
+    .pw-step h3,
+    .pw-step p,
+    .dw-card h3,
+    .dw-card p,
+    .dw-state h3,
+    .dw-state p,
+    .dw-step h3,
+    .dw-step p,
+    .dw-trust strong,
+    .dw-trust span,
+    .dw-cta-side strong,
+    .dw-cta-side span,
+    .dw-highlight-points p
+) {
+    unicode-bidi: plaintext;
+}
+
+html[dir="rtl"] .service-tile-card,
+html[dir="rtl"] .dw-card,
+html[dir="rtl"] .dw-state,
+html[dir="rtl"] .dw-step,
+html[dir="rtl"] .dw-trust article,
+html[dir="rtl"] .dw-cta-side article,
+html[dir="rtl"] body.service-page .about-difference-item > div,
+html[dir="rtl"] .trust-item > div {
+    align-items: stretch !important;
+}
+
+html[dir="rtl"] .trust-item > div,
+html[dir="rtl"] body.service-page .about-difference-item > div,
+html[dir="rtl"] .benefit-text,
+html[dir="rtl"] .service-card .service-content,
+html[dir="rtl"] .svc-body {
+    min-width: 0;
+}
+
+html[dir="rtl"] .hero-slider .content,
+html[dir="rtl"] .slide .content,
+html[dir="rtl"] .hero-video-content,
+html[dir="rtl"] .banner-content,
+html[dir="rtl"] .pricing-banner-content,
+html[dir="rtl"] .app-header,
+html[dir="rtl"] .booking-step,
+html[dir="rtl"] .testimonial-slide,
+html[dir="rtl"] .feedback-card,
+html[dir="rtl"] .pw-process-header,
+html[dir="rtl"] .pw-step {
+    text-align: center !important;
+}
+
+html[dir="rtl"] .trust-item > div,
+html[dir="rtl"] body.service-page .about-difference-item > div,
+html[dir="rtl"] .service-tile-card,
+html[dir="rtl"] .feature-box,
+html[dir="rtl"] .experts-copy,
+html[dir="rtl"] .cta-text,
+html[dir="rtl"] .contact-content,
+html[dir="rtl"] .location-content,
+html[dir="rtl"] .dw-copy,
+html[dir="rtl"] .dw-results-copy,
+html[dir="rtl"] .dw-cta-copy,
+html[dir="rtl"] .dw-card,
+html[dir="rtl"] .dw-state,
+html[dir="rtl"] .dw-step,
+html[dir="rtl"] .dw-trust article,
+html[dir="rtl"] .dw-cta-side article {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .hero-video-actions,
+html[dir="rtl"] .hero-video-points,
+html[dir="rtl"] .hero-points,
+html[dir="rtl"] .why-list,
+html[dir="rtl"] .home2-why-list,
+html[dir="rtl"] .dw-list,
+html[dir="rtl"] .dw-care-list,
+html[dir="rtl"] .dw-cta-list {
+    direction: ltr !important;
+}
+
+html[dir="rtl"] .hero-video-points span,
+html[dir="rtl"] .hero-points li,
+html[dir="rtl"] .why-list li,
+html[dir="rtl"] .wash-intro-info li,
+html[dir="rtl"] .home2-why-list li,
+html[dir="rtl"] .service-benefit-points li,
+html[dir="rtl"] .drive-points li,
+html[dir="rtl"] .dw-list li,
+html[dir="rtl"] .dw-care-list li,
+html[dir="rtl"] .dw-cta-list li,
+html[dir="rtl"] .dw-highlight-points p {
+    direction: ltr !important;
+    unicode-bidi: plaintext;
+}
+
+html[dir="rtl"] .testimonial-track,
+html[dir="rtl"] .gallery-track,
+html[dir="rtl"] .feedbacks-track {
+    direction: ltr !important;
+    flex-direction: row !important;
+}
+
+html.hr-reveal-ready .testimonial-slide.reveal:not(.in),
+html.hr-reveal-ready .gallery-slide.reveal:not(.in),
+html.hr-reveal-ready .feedback-card.reveal:not(.in) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
 }
