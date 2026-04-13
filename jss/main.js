@@ -1140,6 +1140,102 @@ function syncHeaderDirection(direction) {
     syncMobileDropdownState();
 }
 
+function syncEnglishContentDirection(direction) {
+    const isRTL = direction === "rtl";
+    const selectors = [
+        ".hero-slider .content",
+        ".slide .content",
+        ".hero-video-content",
+        ".pricing-banner-content",
+        ".about-banner-content",
+        ".hero-gallery-content",
+        ".banner-content",
+        ".section-heading",
+        ".services-header",
+        ".app-header",
+        ".table-header",
+        ".faq-header",
+        ".map-header",
+        ".contact-header",
+        ".pricing-header",
+        ".about-story-heading",
+        ".about-story-content",
+        ".about-story-quote",
+        ".about-difference-heading",
+        ".about-difference-item > div",
+        ".service-why-copy",
+        ".service-why-point",
+        ".why-copy",
+        ".why-card",
+        ".wash-intro-content",
+        ".home2-why-copy",
+        ".home2-why-card",
+        ".benefits-header",
+        ".benefit-text",
+        ".cta-text",
+        ".gallery-cta",
+        ".trust-item > div",
+        ".promo-copy",
+        ".service-tile-card",
+        ".feature-box",
+        ".package-card",
+        ".price-card",
+        ".offer-card",
+        ".pricing-card",
+        ".pricing-offer",
+        ".service-card .service-content",
+        ".svc-body",
+        ".drive-text",
+        ".drive-card",
+        ".contact-content",
+        ".location-content",
+        ".testimonial-slide",
+        ".feedback-card",
+        ".booking-step",
+        ".pw-process-header",
+        ".pw-step",
+        ".experts-copy",
+        ".dw-copy",
+        ".dw-results-copy",
+        ".dw-cta-copy",
+        ".dw-card",
+        ".dw-state",
+        ".dw-step",
+        ".dw-trust article",
+        ".dw-cta-side article",
+        ".footer-brand",
+        ".footer-column",
+        ".footer-contact li",
+    ];
+
+    document.querySelectorAll(selectors.join(",")).forEach((element) => {
+        if (isRTL) {
+            element.setAttribute("dir", "ltr");
+        } else if (element.getAttribute("dir") === "ltr") {
+            element.removeAttribute("dir");
+        }
+    });
+}
+
+function syncInteractiveTrackDirection(direction) {
+    const isRTL = direction === "rtl";
+    const tracks = [galleryTrack, testimonialTrack, feedbacksTrack];
+
+    tracks.forEach((track) => {
+        if (!track) return;
+
+        if (isRTL) {
+            track.setAttribute("dir", "ltr");
+            track.style.flexDirection = "row";
+        } else {
+            if (track.getAttribute("dir") === "ltr") {
+                track.removeAttribute("dir");
+            }
+            track.style.flexDirection = "row";
+        }
+    });
+}
+
 function applyDirection(direction) {
     const nextDirection = direction === "rtl" ? "rtl" : "ltr";
     document.documentElement.setAttribute("dir", nextDirection);
@@ -1152,6 +1248,11 @@ function applyDirection(direction) {
     }
 
     syncHeaderDirection(nextDirection);
+    syncEnglishContentDirection(nextDirection);
+    syncInteractiveTrackDirection(nextDirection);
+    updateGallery();
+    updateTestimonials();
+    updateFeedbacks();
 }
 
 function applyTheme(theme) {
@@ -1173,7 +1274,17 @@ function showSlide(i) {
 }
 
 applyTheme(localStorage.getItem("hydrorush-theme"));
-applyDirection(localStorage.getItem("hydrorush-direction"));
+
+const initialDirection = document.documentElement.getAttribute("dir") === "rtl" ? "rtl" : "ltr";
+const directionPreferenceVersion = "2026-04-13-rtl-default";
+
+if (localStorage.getItem("hydrorush-direction-version") !== directionPreferenceVersion) {
+    localStorage.setItem("hydrorush-direction", initialDirection);
+    localStorage.setItem("hydrorush-direction-version", directionPreferenceVersion);
+}
+
+const savedDirection = localStorage.getItem("hydrorush-direction");
+applyDirection(savedDirection ?? initialDirection);
 
 if (themeToggle) {
     themeToggle.addEventListener("click", () => {
