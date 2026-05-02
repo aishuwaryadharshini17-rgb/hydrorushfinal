@@ -3699,8 +3699,9 @@ html[dir="rtl"] .wash-intro-info li i {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     min-height: 48px;
-    margin-bottom: 16px;
+    margin-top: auto;
     border: 1.5px solid #1887ec;
     border-radius: 999px;
     color: #1887ec;
@@ -3730,6 +3731,7 @@ html[dir="rtl"] .wash-intro-info li i {
     list-style: none;
     display: grid;
     gap: 11px;
+    margin-bottom: 18px;
     color: #113b7b;
 }
 
@@ -4718,29 +4720,19 @@ html[dir="rtl"] .wash-intro-info li i {
     height: 42px;
     border-radius: 10px;
     color: #ffffff;
+    background: linear-gradient(135deg, rgba(17, 40, 74, 0.96) 0%, rgba(10, 77, 139, 0.96) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 12px 24px rgba(3, 18, 39, 0.22);
+    backdrop-filter: blur(10px);
     text-decoration: none;
     font-size: 1rem;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .login-social:hover {
     transform: translateY(-3px);
-}
-
-.login-social-facebook {
-    background: linear-gradient(135deg, #1d7cff 0%, #0063e7 100%);
-}
-
-.login-social-google {
-    background: linear-gradient(135deg, #0fb3e1 0%, #168eff 100%);
-}
-
-.login-social-x {
-    background: linear-gradient(135deg, #11284a 0%, #0b4d8b 100%);
-}
-
-.login-social-apple {
-    background: linear-gradient(135deg, #183867 0%, #11284a 100%);
+    border-color: rgba(255, 255, 255, 0.26);
+    box-shadow: 0 16px 28px rgba(3, 18, 39, 0.3);
 }
 
 .login-register-note {
@@ -15098,4 +15090,31 @@ html.hr-reveal-ready .feedback-card.reveal:not(.in) {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+}
+
+@media (min-width: 769px) {
+    body.home1-page .hero-slider > .slide .content h1 {
+        font-size: clamp(2.65rem, 3.6vw, 2.9rem) !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+    }
+
+    body.home1-page .hero-slider .slide:nth-of-type(3) .content h1 {
+        font-size: clamp(2.45rem, 3.4vw, 2.75rem) !important;
+    }
+
+    body.home2-page .hero-video-content h1 {
+        font-size: clamp(2.6rem, 3.8vw, 2.9rem) !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 768px) {
+    body.home1-page .hero-slider > .slide .content h1,
+    body.home2-page .hero-video-content h1 {
+        white-space: normal;
+    }
 }
