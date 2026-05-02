@@ -1,6 +1,7 @@
 
 console.log('HydroRush JavaScript loaded successfully');
 
+const heroSlider = document.querySelector(".hero-slider");
 const slides = document.querySelectorAll(".slide");
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
@@ -137,6 +138,15 @@ let index = 0;
 let galleryIndex = 0;
 let testimonialIndex = 0;
 let feedbackIndex = 0;
+let heroSliderDots = [];
+let heroSliderAutoplayId = null;
+
+const heroSliderAutoplayDelay = 5000;
+
+if (slides.length) {
+    const activeSlideIndex = Array.from(slides).findIndex((slide) => slide.classList.contains("active"));
+    index = activeSlideIndex >= 0 ? activeSlideIndex : 0;
+}
 
 function closeMobileDropdowns(exceptDropdown = null) {
     if (!navLinks) return;
@@ -1269,8 +1279,73 @@ function applyTheme(theme) {
 function showSlide(i) {
     if (!slides.length) return;
 
-    slides.forEach((slide) => slide.classList.remove("active"));
-    slides[i].classList.add("active");
+    index = ((i % slides.length) + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === index;
+        slide.classList.toggle("active", isActive);
+        slide.setAttribute("aria-hidden", String(!isActive));
+    });
+
+    heroSliderDots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === index;
+        dot.classList.toggle("active", isActive);
+        dot.setAttribute("aria-pressed", String(isActive));
+    });
+}
+
+function stopHeroSliderAutoplay() {
+    if (!heroSliderAutoplayId) return;
+
+    window.clearInterval(heroSliderAutoplayId);
+    heroSliderAutoplayId = null;
+}
+
+function startHeroSliderAutoplay() {
+    if (slides.length < 2) return;
+
+    stopHeroSliderAutoplay();
+    heroSliderAutoplayId = window.setInterval(() => {
+        showSlide(index + 1);
+    }, heroSliderAutoplayDelay);
+}
+
+function buildHeroSliderDots() {
+    if (!heroSlider || slides.length < 2 || heroSlider.querySelector(".hero-slider-dots")) return;
+
+    const dotsWrapper = document.createElement("div");
+    dotsWrapper.className = "hero-slider-dots";
+    dotsWrapper.setAttribute("aria-label", "Hero slider navigation");
+
+    slides.forEach((_, slideIndex) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "hero-slider-dot";
+        dot.setAttribute("aria-label", `Show slide ${slideIndex + 1}`);
+        dot.addEventListener("click", () => {
+            showSlide(slideIndex);
+            startHeroSliderAutoplay();
+        });
+        dotsWrapper.appendChild(dot);
+    });
+
+    heroSlider.appendChild(dotsWrapper);
+    heroSliderDots = Array.from(dotsWrapper.children);
+}
+
+if (heroSlider && slides.length) {
+    buildHeroSliderDots();
+    showSlide(index);
+
+    heroSlider.addEventListener("mouseenter", stopHeroSliderAutoplay);
+    heroSlider.addEventListener("mouseleave", startHeroSliderAutoplay);
+    heroSlider.addEventListener("focusin", stopHeroSliderAutoplay);
+    heroSlider.addEventListener("focusout", (event) => {
+        if (event.relatedTarget && heroSlider.contains(event.relatedTarget)) return;
+        startHeroSliderAutoplay();
+    });
+
+    startHeroSliderAutoplay();
 }
 
 applyTheme(localStorage.getItem("hydrorush-theme"));
@@ -1375,21 +1450,16 @@ if (registerPasswordToggle && registerPasswordField) {
     });
 }
 
-if (slides.length && next && prev) {
-    next.addEventListener("click", () => {
-        index = (index + 1) % slides.length;
-        showSlide(index);
+if (slides.length) {
+    next?.addEventListener("click", () => {
+        showSlide(index + 1);
+        startHeroSliderAutoplay();
     });
 
-    prev.addEventListener("click", () => {
-        index = (index - 1 + slides.length) % slides.length;
-        showSlide(index);
+    prev?.addEventListener("click", () => {
+        showSlide(index - 1);
+        startHeroSliderAutoplay();
     });
-
-    setInterval(() => {
-        index = (index + 1) % slides.length;
-        showSlide(index);
-    }, 5000);
 }
 
 function getGalleryPerView() {
